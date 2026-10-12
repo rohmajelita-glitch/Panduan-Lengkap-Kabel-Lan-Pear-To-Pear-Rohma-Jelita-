@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Interaktif Pembuatan Kabel LAN (UTP)</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Control Panel Header */
+        .admin-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #1e1b4b;
+            border-bottom: 2px solid var(--primary);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover { background: var(--primary-hover); }
+        .btn-success { background: var(--accent); }
+        .btn-success:hover { background: #059669; }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Section Styling */
+        section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Equipment Grid */
+        .grid-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .tool-card {
+            background: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tool-content {
+            padding: 12px;
+        }
+
+        .tool-content h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: #38bdf8;
+        }
+
+        .tool-content p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Standard Cable Colors */
+        .color-sequence {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .color-sequence { grid-template-columns: 1fr; }
+        }
+
+        .sequence-box {
+            background: #0f172a;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .color-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .color-list li {
+            padding: 6px 12px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Steps Timeline with Images */
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step-card {
+            background: #0f172a;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        @media (max-width: 600px) {
+            .step-card { grid-template-columns: 1fr; }
+        }
+
+        .step-img-box {
+            width: 100%;
+            height: 90px;
+            background: #334155;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .step-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #f1f5f9;
+        }
+
+        .step-num {
+            background: var(--primary);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        .step-info p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Video Section */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            margin-top: 15px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .video-input-group input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: #0f172a;
+            color: white;
+        }
+
+        /* Edit Mode Indicator */
+        .editable-active [contenteditable="true"] {
+            outline: 2px dashed #f59e0b;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Panel Kontrol & Live Edit Mode -->
+    <div class="admin-bar">
+        <span><i class="fa-solid fa-wrench"></i> Panel Kontrol Website</span>
+        <div>
+            <button class="btn" id="toggle-edit-btn" onclick="toggleEditMode()">
+                <i class="fa-solid fa-pen-to-square"></i> Mode Edit: <span id="edit-status">OFF</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <header>
+            <h1 contenteditable="false" id="site-title">Panduan Pembuatan Kabel LAN (UTP)</h1>
+            <p contenteditable="false" id="site-subtitle">Tutorial lengkap merakit kabel jaringan UTP menggunakan konektor RJ45 langkah demi langkah</p>
+        </header>
+
+        <!-- Alat dan Bahan Utama -->
+        <section id="tools">
+            <h2><i class="fa-solid fa-toolbox"></i> Alat dan Bahan Utama</h2>
+            <div class="grid-tools">
+                <!-- Kabel UTP -->
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=300&q=80" alt="Kabel UTP">
+                    <div class="tool-content">
+                        <h3 contenteditable="false">Kabel UTP</h3>
+                        <p contenteditable="false">Media transmisi data jaringan.</p>
+                    </div>
+                </div>
+                <!-- Stripper -->
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=300&q=80" alt="Stripper">
+                    <div class="tool-content">
+                        <h3 contenteditable="false">Stripper</h3>
+                        <p contenteditable="false">Pengupas jaket pelindung luar.</p>
+                    </div>
+                </div>
+                <!-- Konektor RJ45 -->
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=300&q=80" alt="Konektor RJ45">
+                    <div class="tool-content">
+                        <h3 contenteditable="false">Konektor RJ45</h3>
+                        <p contenteditable="false">Penghubung ujung kabel ke port.</p>
+                    </div>
+                </div>
+                <!-- Tang Crimping -->
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=300&q=80" alt="Tang Crimping">
+                    <div class="tool-content">
+                        <h3 contenteditable="false">Tang Crimping</h3>
+                        <p contenteditable="false">Pengunci pin konektor ke kabel.</p>
+                    </div>
+                </div>
+                <!-- LAN Tester -->
+                <div class="tool-card">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=300&q=80" alt="LAN Tester">
+                    <div class="tool-content">
+                        <h3 contenteditable="false">LAN Tester</h3>
+                        <p contenteditable="false">Alat penguji koneksi kabel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Standar Urutan Warna T568B -->
+        <section id="standards">
+            <h2><i class="fa-solid fa-list-ol"></i> Standar Urutan Warna (T568B / Straight)</h2>
+            <div class="color-sequence">
+                <div class="sequence-box">
+                    <h3>Ujung Kabel A</h3>
+                    <ul class="color-list">
+                        <li style="background-color: #fce7f3; color: #9d174d;">1. Putih-Orange</li>
+                        <li style="background-color: #ffedd5; color: #c2410c;">2. Orange</li>
+                        <li style="background-color: #dcfce7; color: #15803d;">3. Putih-Hijau</li>
+                        <li style="background-color: #dbeafe; color: #1d4ed8;">4. Biru</li>
+                        <li style="background-color: #dbeafe; color: #1d4ed8;">5. Putih-Biru</li>
+                        <li style="background-color: #dcfce7; color: #15803d;">6. Hijau</li>
+                        <li style="background-color: #f3e8ff; color: #6b21a8;">7. Putih-Cokelat</li>
+                        <li style="background-color: #f3e8ff; color: #6b21a8;">8. Cokelat</li>
+                    </ul>
+                </div>
+                <div class="sequence-box">
+                    <h3>Ujung Kabel B</h3>
+                    <p style="margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem;">Sama persis dengan Ujung A untuk jenis kabel <b>Straight-Through</b>.</p>
+                    <ul class="color-list">
+                        <li style="background-color: #fce7f3; color: #9d174d;">1. Putih-Orange</li>
+                        <li style="background-color: #ffedd5; color: #c2410c;">2. Orange</li>
+                        <li style="background-color: #dcfce7; color: #15803d;">3. Putih-Hijau</li>
+                        <li style="background-color: #dbeafe; color: #1d4ed8;">4. Biru</li>
+                        <li style="background-color: #dbeafe; color: #1d4ed8;">5. Putih-Biru</li>
+                        <li style="background-color: #dcfce7; color: #15803d;">6. Hijau</li>
+                        <li style="background-color: #f3e8ff; color: #6b21a8;">7. Putih-Cokelat</li>
+                        <li style="background-color: #f3e8ff; color: #6b21a8;">8. Cokelat</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Langkah-Langkah Bergambar -->
+        <section id="steps">
+            <h2><i class="fa-solid fa-stairs"></i> Langkah-Langkah Pembuatan</h2>
+            <div class="steps-container" id="steps-list">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-img-box">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=300&q=80" alt="Kupas Kabel">
+                    </div>
+                    <div class="step-info">
+                        <h3 contenteditable="false"><span class="step-num">1</span> Kupas Kulit Kabel UTP</h3>
+                        <p contenteditable="false">Gunakan stripper untuk mengupas pelindung luar kabel UTP sekitar 2 cm secara hati-hati agar kabel tembaga tidak terluka.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-img-box">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=300&q=80" alt="Susun Warna">
+                    </div>
+                    <div class="step-info">
+                        <h3 contenteditable="false"><span class="step-num">2</span> Luruskan & Urutkan Warna</h3>
+                        <p contenteditable="false">Buka pilinan kabel di dalam, luruskan, lalu susun rapi sesuai urutan standar warna T568B dari kiri ke kanan.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-img-box">
+                        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=300&q=80" alt="Potong Rata">
+                    </div>
+                    <div class="step-info">
+                        <h3 contenteditable="false"><span class="step-num">3</span> Potong Rata Ujung Kabel</h3>
+                        <p contenteditable="false">Pegang erat susunan kabel agar tidak bergeser, lalu potong bagian ujungnya secara rata menggunakan pisau pemotong pada tang crimping.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="step-card">
+                    <div class="step-img-box">
+                        <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=300&q=80" alt="Masukkan Konektor">
+                    </div>
+                    <div class="step-info">
+                        <h3 contenteditable="false"><span class="step-num">4</span> Masukkan ke Konektor RJ45</h3>
+                        <p contenteditable="false">Masukkan kedelapan helai kabel ke dalam konektor RJ45. Pastikan pin tembaga di atas dan ujung kabel menyentuh sekat depan.</p>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="step-card">
+                    <div class="step-img-box">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=300&q=80" alt="Crimping">
+                    </div>
+                    <div class="step-info">
+                        <h3 contenteditable="false"><span class="step-num">5</span> Kunci dengan Tang Crimping</h3>
+                        <p contenteditable="false">Masukkan konektor RJ45 ke lubang tang crimping, lalu tekan tuas tang dengan kuat sampai pin mengunci kabel dengan sempurna.</p>
+                    </div>
+                </div>
+                <!-- Step 6 -->
+                <div class="step-card">
+                    <div class="step-img-box">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=300&q=80" alt="LAN Tester">
+                    </div>
+                    <div class="step-info">
+                        <h3 contenteditable="false"><span class="step-num">6</span> Uji dengan LAN Tester</h3>
+                        <p contenteditable="false">Tancapkan kedua ujung kabel ke LAN Tester. Nyalakan alat dan pastikan lampu indikator 1 sampai 8 menyala berurutan.</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-success" onclick="addNewStep()"><i class="fa-solid fa-plus"></i> Tambah Langkah Baru</button>
+        </section>
+
+        <!-- Video Tutorial Section -->
+        <section id="video-section">
+            <h2><i class="fa-solid fa-video"></i> Video Tutorial Penunjang</h2>
+            <div class="video-input-group">
+                <input type="text" id="youtube-url-input" placeholder="Masukkan Link Video YouTube (contoh: https://www.youtube.com/watch?v=...)">
+                <button class="btn" onclick="updateVideo()"><i class="fa-solid fa-play"></i> Ganti Video</button>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="tutorial-video" src="https://www.youtube.com/embed/3U83eMeeBms" title="Tutorial Pembuatan Kabel LAN" allowfullscreen></iframe>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        let isEditMode = false;
+
+        // Fungsi Tombol Mode Edit Teks
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const editStatusText = document.getElementById('edit-status');
+            const body = document.body;
+            const editableElements = document.querySelectorAll('[contenteditable]');
+
+            if (isEditMode) {
+                editStatusText.textContent = 'ON';
+                editStatusText.style.color = '#34d399';
+                body.classList.add('editable-active');
+                editableElements.forEach(el => el.setAttribute('contenteditable', 'true'));
+            } else {
+                editStatusText.textContent = 'OFF';
+                editStatusText.style.color = 'inherit';
+                body.classList.remove('editable-active');
+                editableElements.forEach(el => el.setAttribute('contenteditable', 'false'));
+            }
+        }
+
+        // Fungsi Tambah Langkah Baru Secara Dinamis
+        function addNewStep() {
+            const stepsList = document.getElementById('steps-list');
+            const currentStepCount = stepsList.querySelectorAll('.step-card').length + 1;
+
+            const newStep = document.createElement('div');
+            newStep.className = 'step-card';
+            newStep.innerHTML = `
+                <div class="step-img-box">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?
