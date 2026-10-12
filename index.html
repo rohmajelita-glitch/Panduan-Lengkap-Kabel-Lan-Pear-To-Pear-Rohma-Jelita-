@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio & Materi Jaringan Komputer - Rohma Jelita</title>
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #f0f7ff;
+            --bg-card: #ffffff;
+            --primary: #0066cc;
+            --primary-light: #e0f2fe;
+            --primary-hover: #0052a3;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --shadow: 0 4px 6px -1px rgba(0, 102, 204, 0.1), 0 2px 4px -1px rgba(0, 102, 204, 0.06);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header Utama */
+        .main-header {
+            text-align: center;
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .main-header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .main-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Banner Profil Singkat */
+        .profile-banner {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f7ff 100%);
+            border: 1px solid #bae6fd;
+            border-radius: var(--radius);
+            padding: 20px 25px;
+            margin-bottom: 35px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+            text-align: center;
+        }
+
+        .profile-info div {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .profile-info strong {
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin: 30px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        /* Grid Daftar Materi / Tugas */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .material-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .material-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .material-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .material-card h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .material-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: #0284c7;
+        }
+        .btn-secondary:hover {
+            background-color: #0369a1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Utama -->
+        <header class="main-header">
+            <h1>PORTFOLIO & MATERI AKADEMIK</h1>
+            <p>Kumpulan Tugas & Panduan Praktikum Jaringan Komputer</p>
+        </header>
+
+        <!-- Profil Singkat -->
+        <div class="profile-banner">
+            <div class="profile-info">
+                <div>Mahasiswa</div>
+                <strong>Rohma Jelita</strong>
+            </div>
+            <div class="profile-info">
+                <div>Kelas</div>
+                <strong>1 TIB</strong>
+            </div>
+            <div class="profile-info">
+                <div>Institusi</div>
+                <strong>Politeknik Negeri Sriwijaya</strong>
+            </div>
+            <div class="profile-info">
+                <div>Mata Kuliah</div>
+                <strong>Jaringan Komputer</strong>
+            </div>
+        </div>
+
+        <!-- Daftar Materi & Tugas -->
+        <h2 class="section-title"><i class="fa-solid fa-folder-open"></i> Daftar Materi & Proyek</h2>
+        <div class="materials-grid">
+            <!-- Kartu Materi 1: Kabel LAN -->
+            <div class="material-card">
+                <div>
+                    <div class="material-icon"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>Panduan Pembuatan Kabel LAN (UTP)</h3>
+                    <p>Website interaktif panduan langkah demi langkah pengkabelan Straight-Through (T568B) lengkap dengan alat, bahan, dan video tutorial.</p>
+                </div>
+                <!-- Ubah 'kabel-lan.html' sesuai nama file HTML panduan kabel LAN Anda di GitHub -->
+                <a href="kabel-lan.html" class="btn"><i class="fa-solid fa-arrow-right"></i> Buka Panduan</a>
+            </div>
+
+            <!-- Kartu Materi 2 (Placeholder untuk materi berikutnya) -->
+            <div class="material-card">
+                <div>
+                    <div class="material-icon"><i class="fa-solid fa-book-atlas"></i></div>
+                    <h3>Materi & Tugas Berikutnya</h3>
+                    <p>Tempat penyimpanan materi praktikum, ringkasan arsitektur komputer, atau tugas jaringan komputer lainnya yang akan datang.</p>
+                </div>
+                <a href="#" class="btn btn-secondary"><i class="fa-solid fa-clock"></i> Segera Hadir</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Rohma Jelita | Politeknik Negeri Sriwijaya - Jaringan Komputer</p>
+        </footer>
+    </div>
+
+</body>
+</html>
